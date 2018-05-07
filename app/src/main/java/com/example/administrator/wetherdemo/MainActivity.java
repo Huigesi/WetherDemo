@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,10 +15,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_search;
     private TextView tv_weather;
     private String url = "https://www.sojson.com/open/api/weather/json.shtml?city=";
-    private Thread thread;
     private ProgressDialog dialog;
     private OkHttpUtils okHttpUtils = new OkHttpUtils();
     private Button btn_beijing_search;
+    private TextView tv_weather_yesterday;
 
 
     @Override
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_search.setOnClickListener(this);
         btn_beijing_search = (Button) findViewById(R.id.btn_beijing_search);
         btn_beijing_search.setOnClickListener(this);
+        tv_weather_yesterday = (TextView) findViewById(R.id.tv_weather_yesterday);
+        tv_weather_yesterday.setOnClickListener(this);
     }
 
     @Override
@@ -50,35 +51,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void startThread(final String city) {
-        thread = new Thread() {
+
+        showDialog();
+        okHttpUtils.sendRequest(MainActivity.this, url + city);
+        OkHttpUtils.ResultCallback resultCallback = new OkHttpUtils.ResultCallback() {
+//            @Override
+//            public void getWendu(final int wendu) {
+//                runOnUiThread(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        if (wendu == 01) {
+//                            Toast.makeText(MainActivity.this, "只能3秒调用一次请求", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            tv_weather.setText("温度:" + wendu);
+//                        }
+//                        dismissDialog();
+//                    }
+//                });
+//            }
+
             @Override
-            public void run() {
-                super.run();
-                showDialog();
-
-                okHttpUtils.sendRequest(MainActivity.this, url + city);
-
-                OkHttpUtils.ResultCallback resultCallback = new OkHttpUtils.ResultCallback() {
+            public void getWeather(final WeatherBean weatherBean) {
+                runOnUiThread(new TimerTask() {
                     @Override
-                    public void getWendu(final int wendu) {
-                        runOnUiThread(new TimerTask() {
-                            @Override
-                            public void run() {
-                                if (wendu == 01) {
-                                    Toast.makeText(MainActivity.this, "只能3秒调用一次请求", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    tv_weather.setText("温度:" + wendu);
-                                }
-                                dismissDialog();
-                            }
-                        });
+                    public void run() {
+                        if (weatherBean.getStatus() == 304) {
+                            Toast.makeText(MainActivity.this, "只能3秒调用一次请求", Toast.LENGTH_SHORT).show();
+                        } else {
+                            tv_weather.setText("城市："+weatherBean.getCity()+" 日期："+weatherBean.getDate()
+                                    +" 温度:" + weatherBean.getData().getWendu());
+                            tv_weather_yesterday.setText("昨日天气："+weatherBean.getData().getYesterday().getLow()+" "
+                                    +weatherBean.getData().getYesterday().getHigh());
+
+
+                        }
+                        dismissDialog();
                     }
-                };
-                okHttpUtils.getResultCallback(resultCallback);
+                });
+            }
+
+            @Override
+            public void onFailure(final Exception e) {
+                runOnUiThread(new TimerTask() {
+                    @Override
+                    public void run() {
+                        dismissDialog();
+                        Toast.makeText(MainActivity.this, "请求失败" + e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         };
-        thread.start();
+        okHttpUtils.getResultCallback(resultCallback);
     }
+
 
     public void showDialog() {
         runOnUiThread(new Runnable() {
