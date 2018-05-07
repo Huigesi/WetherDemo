@@ -2,6 +2,7 @@ package com.example.administrator.wetherdemo;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -52,13 +53,16 @@ public class OkHttpUtils {
         });
 
     }
-    public static boolean isNetworkAvailable(Context context){
-        ConnectivityManager connectivityManager = (ConnectivityManager)
-                context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        boolean isNetworkAvailable=connectivityManager.getActiveNetworkInfo().isAvailable();
-        return isNetworkAvailable;
-    }
+/* public static boolean isNetworkAvailable(Context context) {
+     ConnectivityManager cm = (ConnectivityManager) context
+             .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+         //如果仅仅是用来判断网络连接
+
+
+     return cm.getActiveNetworkInfo().isAvailable();
+ }*/
 
 
     public void getResultCallback(ResultCallback resultCallback) {

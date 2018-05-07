@@ -3,6 +3,7 @@ package com.example.administrator.wetherdemo;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -42,41 +43,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_search:
-                startThread("广州");
+                setRequest("广州");
                 break;
             case R.id.btn_beijing_search:
-                startThread("北京");
+                setRequest("北京");
                 break;
         }
     }
 
-    private void startThread(final String city) {
+    private void setRequest(final String city) {
 
         showDialog();
+   /*     if (OkHttpUtils.isNetworkAvailable(this)){
+            Toast.makeText(MainActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
+            Log.i("isNet",OkHttpUtils.isNetworkAvailable(MainActivity.this)+"");
+        }*/
         okHttpUtils.sendRequest(MainActivity.this, url + city);
         OkHttpUtils.ResultCallback resultCallback = new OkHttpUtils.ResultCallback() {
-//            @Override
-//            public void getWendu(final int wendu) {
-//                runOnUiThread(new TimerTask() {
-//                    @Override
-//                    public void run() {
-//                        if (wendu == 01) {
-//                            Toast.makeText(MainActivity.this, "只能3秒调用一次请求", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            tv_weather.setText("温度:" + wendu);
-//                        }
-//                        dismissDialog();
-//                    }
-//                });
-//            }
-
             @Override
             public void getWeather(final WeatherBean weatherBean) {
                 runOnUiThread(new TimerTask() {
                     @Override
                     public void run() {
                         if (weatherBean.getStatus() == 304) {
-                            Toast.makeText(MainActivity.this, "只能3秒调用一次请求", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, weatherBean.getMessage(), Toast.LENGTH_SHORT).show();
                         } else {
                             tv_weather.setText("城市："+weatherBean.getCity()+" 日期："+weatherBean.getDate()
                                     +" 温度:" + weatherBean.getData().getWendu());
