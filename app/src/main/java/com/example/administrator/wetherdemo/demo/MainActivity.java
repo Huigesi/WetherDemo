@@ -1,12 +1,16 @@
-package com.example.administrator.wetherdemo;
+package com.example.administrator.wetherdemo.demo;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.administrator.wetherdemo.R;
 
 import java.util.List;
 import java.util.TimerTask;
@@ -55,13 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setRequest(final String city) {
-
         showDialog();
-   /*     if (OkHttpUtils.isNetworkAvailable(this)){
-            Toast.makeText(MainActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
-            Log.i("isNet",OkHttpUtils.isNetworkAvailable(MainActivity.this)+"");
-        }*/
-        okHttpUtils.sendRequest(MainActivity.this, url + city);
+
         OkHttpUtils.ResultCallback resultCallback = new OkHttpUtils.ResultCallback() {
             @Override
             public void getWeather(final WeatherBean weatherBean) {
@@ -75,11 +74,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     + " 温度:" + weatherBean.getData().getWendu());
                             tv_weather_yesterday.setText("昨日天气：" + weatherBean.getData().getYesterday().getLow() + " "
                                     + weatherBean.getData().getYesterday().getHigh());
-                            List<WeatherBean.DataBean.ForecastBean> forecastBeanList=weatherBean.getData().getForecast();
+                            List<WeatherBean.DataBean.ForecastBean> forecastBeanList = weatherBean.getData().getForecast();
 
-                            tv_weather_forecast.setText( forecastBeanList.get(4).getDate()+" "
+                            /*tv_weather_forecast.setText( forecastBeanList.get(4).getDate()+" "
                                     +forecastBeanList.get(4).getHigh()+""+forecastBeanList.get(4).getLow());
-
+*/
                         }
                         dismissDialog();
                     }
@@ -92,12 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         dismissDialog();
-                        Toast.makeText(MainActivity.this, "请求失败" + e.toString(), Toast.LENGTH_SHORT).show();
+                        tv_weather.setText(e.toString());
                     }
                 });
             }
         };
-        okHttpUtils.getResultCallback(resultCallback);
+        okHttpUtils.getResultCallback(url+city,resultCallback);
     }
 
 

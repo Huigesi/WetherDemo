@@ -1,4 +1,4 @@
-package com.example.administrator.wetherdemo;
+package com.example.administrator.wetherdemo.demo;
 
 import com.google.gson.Gson;
 
@@ -48,7 +48,7 @@ public class JsonUtils {
 
     public static WeatherBean getWeather(String res) {
         Gson gson = new Gson();
-        WeatherBean wetherBean = gson.fromJson(res, WeatherBean.class);
-        return wetherBean;
+        WeatherBean weatherBean = gson.fromJson(res, WeatherBean.class);
+        return weatherBean;
     }
 }

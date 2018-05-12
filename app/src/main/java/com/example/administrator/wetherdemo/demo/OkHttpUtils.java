@@ -1,11 +1,8 @@
-package com.example.administrator.wetherdemo;
+package com.example.administrator.wetherdemo.demo;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
-
-import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -22,9 +19,22 @@ import okhttp3.Response;
 
 public class OkHttpUtils {
     String res = null;
+    private static OkHttpUtils okHttpUtils;
     private ResultCallback resultCallback;
 
-    public void sendRequest(final Context context, String url) {
+    private synchronized static OkHttpUtils getInstance() {
+        if (okHttpUtils == null) {
+            okHttpUtils = new OkHttpUtils();
+        }
+        return okHttpUtils;
+    }
+
+    public static void getResultCallback(String url, ResultCallback resultCallback) {
+        getInstance().sendRequest(url, resultCallback);
+    }
+
+
+    public void sendRequest(String url, final ResultCallback resultCallback) {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(2, TimeUnit.SECONDS)
@@ -37,40 +47,26 @@ public class OkHttpUtils {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                if (resultCallback!=null){
+                if (resultCallback != null) {
                     resultCallback.onFailure(e);
                 }
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 res = response.body().string();
                 Log.i("res", res);
-                WeatherBean bean=JsonUtils.getWeather(res);
+                WeatherBean bean = JsonUtils.getWeather(res);
                 if (resultCallback != null) {
                     resultCallback.getWeather(bean);
                 }
             }
         });
-
-    }
-
-/* public static boolean isNetworkAvailable(Context context) {
-     ConnectivityManager cm = (ConnectivityManager) context
-             .getSystemService(Context.CONNECTIVITY_SERVICE);
-
-         //如果仅仅是用来判断网络连接
-
-
-     return cm.getActiveNetworkInfo().isAvailable();
- }*/
-
-
-    public void getResultCallback(ResultCallback resultCallback) {
-        this.resultCallback = resultCallback;
     }
 
     public interface ResultCallback {
         void getWeather(WeatherBean weatherBean);
+
         void onFailure(Exception e);
     }
 }

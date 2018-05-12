@@ -1,4 +1,4 @@
-package com.example.administrator.wetherdemo;
+package com.example.administrator.wetherdemo.demo;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ public class WeatherBean {
      * date : 20180507
      * message : Success !
      * status : 200
-     * city : 北京
-     * count : 1656
-     * data : {"shidu":"52%","pm25":51,"pm10":179,"quality":"轻度污染","wendu":"21","ganmao":"儿童、老年人及心脏、呼吸系统疾病患者人群应减少长时间或高强度户外锻炼","yesterday":{"date":"06日星期日","sunrise":"05:11","high":"高温 28.0℃","low":"低温 14.0℃","sunset":"19:13","aqi":108,"fx":"西南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},"forecast":[{"date":"07日星期一","sunrise":"05:09","high":"高温 28.0℃","low":"低温 13.0℃","sunset":"19:14","aqi":96,"fx":"南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"08日星期二","sunrise":"05:08","high":"高温 27.0℃","low":"低温 13.0℃","sunset":"19:15","aqi":90,"fx":"东南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"09日星期三","sunrise":"05:07","high":"高温 29.0℃","low":"低温 17.0℃","sunset":"19:16","aqi":91,"fx":"南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"10日星期四","sunrise":"05:06","high":"高温 29.0℃","low":"低温 18.0℃","sunset":"19:17","aqi":85,"fx":"西南风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"11日星期五","sunrise":"05:05","high":"高温 28.0℃","low":"低温 16.0℃","sunset":"19:18","aqi":78,"fx":"南风","fl":"<3级","type":"阴","notice":"不要被阴云遮挡住好心情"}]}
+     * city : 广州
+     * count : 1642
+     * data : {"shidu":"86%","pm25":14,"pm10":24,"quality":"优","wendu":"26","ganmao":"各类人群可自由活动","yesterday":{"date":"06日星期日","sunrise":"05:52","high":"高温 30.0℃","low":"低温 24.0℃","sunset":"18:56","aqi":44,"fx":"无持续风向","fl":"<3级","type":"雷阵雨","notice":"带好雨具，别在树下躲雨"},"forecast":[{"date":"07日星期一","sunrise":"05:51","high":"高温 27.0℃","low":"低温 21.0℃","sunset":"18:57","aqi":43,"fx":"无持续风向","fl":"<3级","type":"大到暴雨","notice":"雨势转大，在外找好避雨处"},{"date":"08日星期二","sunrise":"05:51","high":"高温 26.0℃","low":"低温 21.0℃","sunset":"18:57","aqi":49,"fx":"无持续风向","fl":"<3级","type":"大到暴雨","notice":"雨势转大，在外找好避雨处"},{"date":"09日星期三","sunrise":"05:50","high":"高温 25.0℃","low":"低温 21.0℃","sunset":"18:58","aqi":57,"fx":"无持续风向","fl":"<3级","type":"中雨","notice":"记得随身携带雨伞哦"},{"date":"10日星期四","sunrise":"05:49","high":"高温 26.0℃","low":"低温 21.0℃","sunset":"18:58","aqi":53,"fx":"东南风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"11日星期五","sunrise":"05:49","high":"高温 28.0℃","low":"低温 22.0℃","sunset":"18:59","aqi":45,"fx":"东风","fl":"3-4级","type":"阵雨","notice":"阵雨来袭，出门记得带伞"}]}
      */
 
     private String date;
@@ -74,19 +74,19 @@ public class WeatherBean {
 
     public static class DataBean {
         /**
-         * shidu : 52%
-         * pm25 : 51
-         * pm10 : 179
-         * quality : 轻度污染
-         * wendu : 21
-         * ganmao : 儿童、老年人及心脏、呼吸系统疾病患者人群应减少长时间或高强度户外锻炼
-         * yesterday : {"date":"06日星期日","sunrise":"05:11","high":"高温 28.0℃","low":"低温 14.0℃","sunset":"19:13","aqi":108,"fx":"西南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"}
-         * forecast : [{"date":"07日星期一","sunrise":"05:09","high":"高温 28.0℃","low":"低温 13.0℃","sunset":"19:14","aqi":96,"fx":"南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"08日星期二","sunrise":"05:08","high":"高温 27.0℃","low":"低温 13.0℃","sunset":"19:15","aqi":90,"fx":"东南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"09日星期三","sunrise":"05:07","high":"高温 29.0℃","low":"低温 17.0℃","sunset":"19:16","aqi":91,"fx":"南风","fl":"3-4级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"10日星期四","sunrise":"05:06","high":"高温 29.0℃","low":"低温 18.0℃","sunset":"19:17","aqi":85,"fx":"西南风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"11日星期五","sunrise":"05:05","high":"高温 28.0℃","low":"低温 16.0℃","sunset":"19:18","aqi":78,"fx":"南风","fl":"<3级","type":"阴","notice":"不要被阴云遮挡住好心情"}]
+         * shidu : 86%
+         * pm25 : 14.0
+         * pm10 : 24.0
+         * quality : 优
+         * wendu : 26
+         * ganmao : 各类人群可自由活动
+         * yesterday : {"date":"06日星期日","sunrise":"05:52","high":"高温 30.0℃","low":"低温 24.0℃","sunset":"18:56","aqi":44,"fx":"无持续风向","fl":"<3级","type":"雷阵雨","notice":"带好雨具，别在树下躲雨"}
+         * forecast : [{"date":"07日星期一","sunrise":"05:51","high":"高温 27.0℃","low":"低温 21.0℃","sunset":"18:57","aqi":43,"fx":"无持续风向","fl":"<3级","type":"大到暴雨","notice":"雨势转大，在外找好避雨处"},{"date":"08日星期二","sunrise":"05:51","high":"高温 26.0℃","low":"低温 21.0℃","sunset":"18:57","aqi":49,"fx":"无持续风向","fl":"<3级","type":"大到暴雨","notice":"雨势转大，在外找好避雨处"},{"date":"09日星期三","sunrise":"05:50","high":"高温 25.0℃","low":"低温 21.0℃","sunset":"18:58","aqi":57,"fx":"无持续风向","fl":"<3级","type":"中雨","notice":"记得随身携带雨伞哦"},{"date":"10日星期四","sunrise":"05:49","high":"高温 26.0℃","low":"低温 21.0℃","sunset":"18:58","aqi":53,"fx":"东南风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"11日星期五","sunrise":"05:49","high":"高温 28.0℃","low":"低温 22.0℃","sunset":"18:59","aqi":45,"fx":"东风","fl":"3-4级","type":"阵雨","notice":"阵雨来袭，出门记得带伞"}]
          */
 
         private String shidu;
-        private int pm25;
-        private int pm10;
+        private double pm25;
+        private double pm10;
         private String quality;
         private String wendu;
         private String ganmao;
@@ -101,19 +101,19 @@ public class WeatherBean {
             this.shidu = shidu;
         }
 
-        public int getPm25() {
+        public double getPm25() {
             return pm25;
         }
 
-        public void setPm25(int pm25) {
+        public void setPm25(double pm25) {
             this.pm25 = pm25;
         }
 
-        public int getPm10() {
+        public double getPm10() {
             return pm10;
         }
 
-        public void setPm10(int pm10) {
+        public void setPm10(double pm10) {
             this.pm10 = pm10;
         }
 
@@ -160,15 +160,15 @@ public class WeatherBean {
         public static class YesterdayBean {
             /**
              * date : 06日星期日
-             * sunrise : 05:11
-             * high : 高温 28.0℃
-             * low : 低温 14.0℃
-             * sunset : 19:13
-             * aqi : 108
-             * fx : 西南风
-             * fl : 3-4级
-             * type : 晴
-             * notice : 愿你拥有比阳光明媚的心情
+             * sunrise : 05:52
+             * high : 高温 30.0℃
+             * low : 低温 24.0℃
+             * sunset : 18:56
+             * aqi : 44.0
+             * fx : 无持续风向
+             * fl : <3级
+             * type : 雷阵雨
+             * notice : 带好雨具，别在树下躲雨
              */
 
             private String date;
@@ -176,7 +176,7 @@ public class WeatherBean {
             private String high;
             private String low;
             private String sunset;
-            private int aqi;
+            private double aqi;
             private String fx;
             private String fl;
             private String type;
@@ -222,11 +222,11 @@ public class WeatherBean {
                 this.sunset = sunset;
             }
 
-            public int getAqi() {
+            public double getAqi() {
                 return aqi;
             }
 
-            public void setAqi(int aqi) {
+            public void setAqi(double aqi) {
                 this.aqi = aqi;
             }
 
@@ -266,15 +266,15 @@ public class WeatherBean {
         public static class ForecastBean {
             /**
              * date : 07日星期一
-             * sunrise : 05:09
-             * high : 高温 28.0℃
-             * low : 低温 13.0℃
-             * sunset : 19:14
-             * aqi : 96
-             * fx : 南风
-             * fl : 3-4级
-             * type : 晴
-             * notice : 愿你拥有比阳光明媚的心情
+             * sunrise : 05:51
+             * high : 高温 27.0℃
+             * low : 低温 21.0℃
+             * sunset : 18:57
+             * aqi : 43.0
+             * fx : 无持续风向
+             * fl : <3级
+             * type : 大到暴雨
+             * notice : 雨势转大，在外找好避雨处
              */
 
             private String date;
@@ -282,7 +282,7 @@ public class WeatherBean {
             private String high;
             private String low;
             private String sunset;
-            private int aqi;
+            private double aqi;
             private String fx;
             private String fl;
             private String type;
@@ -328,11 +328,11 @@ public class WeatherBean {
                 this.sunset = sunset;
             }
 
-            public int getAqi() {
+            public double getAqi() {
                 return aqi;
             }
 
-            public void setAqi(int aqi) {
+            public void setAqi(double aqi) {
                 this.aqi = aqi;
             }
 
