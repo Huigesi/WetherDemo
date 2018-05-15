@@ -1,5 +1,6 @@
-package com.example.administrator.wetherdemo.demo;
+package com.example.administrator.wetherdemo.mvp.utils;
 
+import com.example.administrator.wetherdemo.mvp.WeatherBean;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -51,4 +52,5 @@ public class JsonUtils {
         WeatherBean weatherBean = gson.fromJson(res, WeatherBean.class);
         return weatherBean;
     }
+
 }

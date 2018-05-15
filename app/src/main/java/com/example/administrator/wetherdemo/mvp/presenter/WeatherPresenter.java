@@ -1,12 +1,16 @@
-package com.example.administrator.wetherdemo.mvp;
+package com.example.administrator.wetherdemo.mvp.presenter;
 
-import com.example.administrator.wetherdemo.demo.WeatherBean;
+import com.example.administrator.wetherdemo.mvp.View.IWeatherView;
+import com.example.administrator.wetherdemo.mvp.WeatherBean;
+import com.example.administrator.wetherdemo.mvp.model.ILoadListener;
+import com.example.administrator.wetherdemo.mvp.model.IWeatherModel;
+import com.example.administrator.wetherdemo.mvp.model.WeatherModel;
 
 /**
  * Created by Administrator on 2018/5/12.
  */
 
-public class WeatherPresenter implements IWeatherPresenter,ILoadListener{
+public class WeatherPresenter implements IWeatherPresenter,ILoadListener {
 
     private String url = "https://www.sojson.com/open/api/weather/json.shtml?city=";
 

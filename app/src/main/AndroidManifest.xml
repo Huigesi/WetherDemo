@@ -15,7 +15,7 @@
         <activity android:name=".demo.MainActivity">
 
         </activity>
-        <activity android:name=".mvp.ActivityMainActivity">
+        <activity android:name=".mvp.View.ActivityMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

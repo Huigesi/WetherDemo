@@ -1,7 +1,7 @@
-package com.example.administrator.wetherdemo.mvp;
+package com.example.administrator.wetherdemo.mvp.model;
 
-import com.example.administrator.wetherdemo.demo.OkHttpUtils;
-import com.example.administrator.wetherdemo.demo.WeatherBean;
+import com.example.administrator.wetherdemo.mvp.WeatherBean;
+import com.example.administrator.wetherdemo.mvp.utils.OkHttpUtils;
 
 /**
  * Created by Administrator on 2018/5/8.

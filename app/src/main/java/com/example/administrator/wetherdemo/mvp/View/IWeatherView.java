@@ -1,6 +1,6 @@
-package com.example.administrator.wetherdemo.mvp;
+package com.example.administrator.wetherdemo.mvp.View;
 
-import com.example.administrator.wetherdemo.demo.WeatherBean;
+import com.example.administrator.wetherdemo.mvp.WeatherBean;
 
 /**
  * Created by Administrator on 2018/5/12.

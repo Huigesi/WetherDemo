@@ -1,4 +1,4 @@
-package com.example.administrator.wetherdemo.mvp;
+package com.example.administrator.wetherdemo.mvp.model;
 
 /**
  * Created by Administrator on 2018/5/8.

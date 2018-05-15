@@ -1,8 +1,8 @@
-package com.example.administrator.wetherdemo.demo;
+package com.example.administrator.wetherdemo.mvp.utils;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.util.Log;
+
+import com.example.administrator.wetherdemo.mvp.WeatherBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +20,6 @@ import okhttp3.Response;
 public class OkHttpUtils {
     String res = null;
     private static OkHttpUtils okHttpUtils;
-    private ResultCallback resultCallback;
 
     private synchronized static OkHttpUtils getInstance() {
         if (okHttpUtils == null) {
@@ -32,7 +31,6 @@ public class OkHttpUtils {
     public static void getResultCallback(String url, ResultCallback resultCallback) {
         getInstance().sendRequest(url, resultCallback);
     }
-
 
     public void sendRequest(String url, final ResultCallback resultCallback) {
 
