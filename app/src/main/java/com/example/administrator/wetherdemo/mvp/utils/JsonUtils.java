@@ -1,5 +1,6 @@
 package com.example.administrator.wetherdemo.mvp.utils;
 
+import com.example.administrator.wetherdemo.mvp.BookBean;
 import com.example.administrator.wetherdemo.mvp.WeatherBean;
 import com.google.gson.Gson;
 
@@ -51,6 +52,11 @@ public class JsonUtils {
         Gson gson = new Gson();
         WeatherBean weatherBean = gson.fromJson(res, WeatherBean.class);
         return weatherBean;
+    }
+    public static BookBean getBook(String res) {
+        Gson gson = new Gson();
+        BookBean bookBean = gson.fromJson(res, BookBean.class);
+        return bookBean;
     }
 
 }
