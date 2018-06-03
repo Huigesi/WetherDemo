@@ -25,7 +25,7 @@ public class WeatherPresenter implements IWeatherPresenter,ILoadListener {
     @Override
     public void loadWeather(String city) {
         iWeatherView.showProgress();
-        iWeatherModel.loadWeather(url+city,this);
+        iWeatherModel.loadWeather(city,this);
     }
 
     @Override
@@ -35,8 +35,8 @@ public class WeatherPresenter implements IWeatherPresenter,ILoadListener {
     }
 
     @Override
-    public void onFailure(Exception e) {
+    public void onFailure(Throwable t) {
         iWeatherView.hideProgress();
-        iWeatherView.showLoadFailMsg(e);
+        iWeatherView.showLoadFailMsg(t);
     }
 }

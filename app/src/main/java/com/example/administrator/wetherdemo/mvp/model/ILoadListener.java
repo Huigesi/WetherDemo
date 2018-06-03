@@ -9,5 +9,5 @@ import com.example.administrator.wetherdemo.mvp.WeatherBean;
 public interface ILoadListener {
     void onSuccess(WeatherBean bean);
 
-    void onFailure(Exception e);
+    void onFailure(Throwable t);
 }

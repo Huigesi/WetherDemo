@@ -10,5 +10,5 @@ import com.example.administrator.wetherdemo.mvp.WeatherBean;
 public interface ILoadBookListener {
     void onSuccess(BookBean bookBean);
 
-    void onFailure(Exception e);
+    void onFailure(Throwable t);
 }

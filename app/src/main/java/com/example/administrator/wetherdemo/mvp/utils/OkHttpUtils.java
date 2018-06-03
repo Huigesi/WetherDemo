@@ -18,7 +18,7 @@ import okhttp3.Response;
  * Created by Administrator on 2018/5/2.
  */
 
-public class OkHttpUtils<T> {
+public class OkHttpUtils {
     String res = null;
     private static OkHttpUtils okHttpUtils;
 

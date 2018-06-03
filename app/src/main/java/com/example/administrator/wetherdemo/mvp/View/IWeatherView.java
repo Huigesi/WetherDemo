@@ -10,5 +10,5 @@ public interface IWeatherView {
     void showProgress();
     void hideProgress();
     void showWeatherData(WeatherBean weatherBean);
-    void showLoadFailMsg(Exception e);
+    void showLoadFailMsg(Throwable t);
 }

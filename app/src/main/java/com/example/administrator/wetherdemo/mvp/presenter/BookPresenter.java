@@ -29,14 +29,16 @@ public class BookPresenter implements ILoadBookListener,IBookPresenter{
     }
 
     @Override
-    public void onFailure(Exception e) {
+    public void onFailure(Throwable t) {
         iBookView.hideProgress();
-        iBookView.showLoadFailMsg(e);
+        iBookView.showLoadFailMsg(t);
     }
+
+
 
     @Override
     public void loadBook(String bookName) {
         iBookView.showProgress();
-        iBookModel.loadBook(url+bookName,this);
+        iBookModel.loadBook(bookName,this);
     }
 }

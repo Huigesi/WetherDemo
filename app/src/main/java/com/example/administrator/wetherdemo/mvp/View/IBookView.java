@@ -13,6 +13,6 @@ public interface IBookView {
 
     void hideProgress();
 
-    void showLoadFailMsg(Exception e);
+    void showLoadFailMsg(Throwable t);
 
 }

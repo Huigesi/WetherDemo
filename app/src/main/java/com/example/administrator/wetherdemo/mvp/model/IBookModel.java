@@ -5,5 +5,5 @@ package com.example.administrator.wetherdemo.mvp.model;
  */
 
 public interface IBookModel {
-    void loadBook(String url,ILoadBookListener iLoadBookListener);
+    void loadBook(String name,ILoadBookListener iLoadBookListener);
 }

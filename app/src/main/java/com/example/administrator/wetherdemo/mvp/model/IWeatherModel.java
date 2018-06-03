@@ -5,6 +5,6 @@ package com.example.administrator.wetherdemo.mvp.model;
  */
 
 public interface IWeatherModel {
-    void loadWeather(String url,ILoadListener loadListener);
+    void loadWeather(String city,ILoadListener loadListener);
 
 }

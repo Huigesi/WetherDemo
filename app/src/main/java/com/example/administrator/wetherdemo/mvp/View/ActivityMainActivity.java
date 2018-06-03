@@ -3,6 +3,7 @@ package com.example.administrator.wetherdemo.mvp.View;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -52,6 +53,7 @@ public class ActivityMainActivity extends Activity implements IBookView, IWeathe
                 break;
             case R.id.btn_book:
                     bookPresenter.loadBook("金瓶梅");
+                Log.i("book", "onClick: ");
                 break;
         }
     }
@@ -61,7 +63,8 @@ public class ActivityMainActivity extends Activity implements IBookView, IWeathe
         runOnUiThread(new TimerTask() {
             @Override
             public void run() {
-                tv_book.setText(bookBean.getBooks().get(0).getAuthor()+" "+bookBean.getBooks().get(0).getSubtitle());
+                Log.i("bookbean", "run: "+bookBean.getBooks().get(0).getCatalog());
+               tv_book.setText(bookBean.getBooks().get(1).getAuthor_intro());
             }
         });
     }
@@ -80,6 +83,16 @@ public class ActivityMainActivity extends Activity implements IBookView, IWeathe
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
+    }
+
+    @Override
+    public void showLoadFailMsg(final Throwable t) {
+        runOnUiThread(new TimerTask() {
+            @Override
+            public void run() {
+                tvWeather.setText("加载数据失败:" + t.getMessage());
+            }
+        });
     }
 
     @Override
@@ -102,16 +115,6 @@ public class ActivityMainActivity extends Activity implements IBookView, IWeathe
         });
     }
 
-    @Override
-    public void showLoadFailMsg(final Exception e) {
-        runOnUiThread(new TimerTask() {
-            @Override
-            public void run() {
-                tvWeather.setText("加载数据失败:" + e.toString());
-            }
-        });
-
-    }
 
     private void initView() {
         btn_book = (Button) findViewById(R.id.btn_book);
